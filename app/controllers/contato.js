@@ -1,3 +1,5 @@
+var sanitize = require('mongo-sanitize');
+
 module.exports = function(app){
 
 	var Contato = app.models.contato;
@@ -33,7 +35,7 @@ module.exports = function(app){
 	};
 	
 	controller.removeContato = function(req,res){
-		var _id = req.params.id;
+		var _id = sanitize(req.params.id);
 		Contato.remove({"_id" : _id}).exec()
 			.then(
 				function () {
