@@ -30,4 +30,8 @@ module.exports = function (app) {
             failureRedirect: '/login'
         }));
 
+    app.get('/logout',function (req,res) {
+        req.logOut();
+        res.redirect('/');
+    });
 }

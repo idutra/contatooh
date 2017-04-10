@@ -80,6 +80,8 @@ module.exports = function () {
     });
 
     passport.deserializeUser(function(obj, done) {
-        done(null, obj);
+        Usuario.findById(obj).exec().then(function (usuario) {
+            done(null,usuario);
+        })
     });
 };
