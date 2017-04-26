@@ -22,7 +22,7 @@ Obs: O Bower depende do Git instalado para funcionar</i>
 <code>
 npm install bower@1.3
 </code></span>
-<br /><span style="color:red;font-size:10px;">*<i>ignorar este passo caso o já possua o BOWER instalado no NodeJS instalado.</i></span>
+<br /><span style="color:red;font-size:10px;">*<i>ignorar este passo caso o já possua o BOWER instalado.</i></span>
 <br /><br /><br />
 Deverá ser baixado o projeto do Git através do comando: <code>git@github.com:idutra/contatooh.git</code>
 <br /><br />
