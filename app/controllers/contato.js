@@ -13,7 +13,7 @@ module.exports = function(app){
 					res.json(contatos);
                 },
 				function (erro) {
-					console.error(erro)
+					console.error(erro);
 					res.status(500).json(erro);
                 }
 			);
@@ -68,7 +68,7 @@ module.exports = function(app){
 						res.json(contato);
                     },
 					function (erro) {
-						console.error(erro)
+						console.error(erro);
 						res.status(500).json(erro);
                     }
 				);
@@ -85,7 +85,7 @@ module.exports = function(app){
                     }
 				)
 		}
-	}
+	};
 	
 	function adiciona(contatoNovo){}
 	
@@ -93,4 +93,4 @@ module.exports = function(app){
 	
 	return controller;
 
-}
+};

@@ -34,4 +34,4 @@ module.exports = function (app) {
         req.logOut();
         res.redirect('/');
     });
-}
+};

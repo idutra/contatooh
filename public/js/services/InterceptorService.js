@@ -4,6 +4,7 @@
 angular.module('contatooh')
     .factory('meuInterceptor',
     function ($location,$q) {
+        //noinspection UnnecessaryLocalVariableJS
         var interceptor = {
             responseError : function (resposta) {
                 if(resposta.status == 401){
@@ -11,7 +12,7 @@ angular.module('contatooh')
                 }
                 return $q.reject(resposta);
             }
-        }
+        };
 
         return interceptor;
-    })
+    });
