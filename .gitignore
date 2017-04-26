@@ -1,10 +1,11 @@
 .tmp
-.tmp/
-.idea
-.idea/
 .DS_Store
 .DS_Store?
 node_modules/
-public/vendor/
-dist/
-script/
+/public/vendor
+/dist
+/scripts
+.dpl/
+.idea
+.idea/
+.iml
