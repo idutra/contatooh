@@ -27,6 +27,5 @@ npm install bower@1.3
 Deverá ser baixado o projeto do Git através do comando: <code>git@github.com:idutra/contatooh.git</code>
 <br /><br />
 Para instalação das dependências deverá ser executados os seguintes comandos no terminal do NodeJS:
-<br /><br />
 <code>npm i</code>
 <br /><br /><br />
