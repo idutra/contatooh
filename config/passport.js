@@ -2,6 +2,7 @@
  * Created by IGOR on 30/03/2017.
  */
 var passport = require('passport');
+
 /*Autenticação pelo Git-Hub*/
 //var GitHubStrategy = require('passport-github').Strategy;
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
@@ -13,8 +14,8 @@ module.exports = function () {
     var Usuario = mongoose.model('Usuario');
 
     passport.use(new GoogleStrategy({
-            clientID:     '668354287545-89lmhk6pk4efcen89uvcmt9d9o14f8pe.apps.googleusercontent.com',
-            clientSecret: 'npY4kvTmLzca-EexTIdRklSP',
+            clientID:     'CIENT_ID',
+            clientSecret: 'CLIENT_SECRET',
             callbackURL: "http://localhost:3000/auth/google/callback",
             passReqToCallback   : true
         },
@@ -38,8 +39,8 @@ module.exports = function () {
 
     /* Autenticação via GitHub
     passport.use(new GitHubStrategy({
-        clientID: 'c0381860407ca83165a5',
-        clientSecret: '0ad55fc8845ef5fd929fe913f14967ae138727d7',
+        clientID: 'CLIENT_ID',
+        clientSecret: 'CLIENT_SECRET',
         callbackURL: 'http://localhost:3000/auth/github/callback'
     }, function(accessToken, refreshToken, profile, done) {
 
