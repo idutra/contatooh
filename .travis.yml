@@ -22,4 +22,3 @@ before_script:
 - grunt
 script:
 - karma start config/karma.config.js --single-run --browsers PhantomJS
-- protractor config/protractor.js
