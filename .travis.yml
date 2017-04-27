@@ -2,9 +2,9 @@ language: node_js
 node_js:
 - 0.10
 notifications:
-- igor.p.dutra87@gmail.com
+  email: false
 services:
--mongodb
+- mongodb
 env:
   global:
   - NODE_ENV: test
@@ -20,8 +20,6 @@ before_install:
 before_script:
 - node test/data.js
 - grunt
-- cd dist
 script:
 - karma start config/karma.config.js --single-run --browsers PhantomJS
-- node server &
 - protractor config/protractor.js
