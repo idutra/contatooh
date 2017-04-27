@@ -1,4 +1,14 @@
+var config = require('./config')();
 exports.config = {
+    sauceUser: config.sauceUser,
+    sauceKey: config.sauceKey,
+    capabilities : {
+        'name' : config.sauceTestName,
+        'browserName' : 'chrome',
+        'tunnel-identifier' : config.travisJobNumber,
+        'build' : config.travisBuild
+    },
+
     specs: ['../test/e2e/**/*.js'],
     onPrepare: function() {
         var dvr = browser.driver;
@@ -9,13 +19,13 @@ exports.config = {
             console.log('[SELENIUM-TEST][AÇÃO] Clicando no link [ENTRAR]');
             dvr.findElement(by.id('entrar')).click();
             console.log('[SELENIUM-TEST][AÇÃO] Informando o e-mail de login');
-            dvr.findElement(by.id('Email')).sendKeys('livromeanstack@gmail.com');
+            dvr.findElement(by.id('Email')).sendKeys(config.seleniumUser);
             console.log('[SELENIUM-TEST][AÇÃO] Clicando no botão [NEXT]');
             dvr.findElement(by.id('next')).click();
             console.log('[SELENIUM-TEST] Aguardando o carregamento da página');
             dvr.sleep(1000);//Se faz necessário pois o carregamento dos seletores é mais demorado que a ação do selenium.
             console.log('[SELENIUM-TEST][AÇÃO] Informando a senha');
-            dvr.findElement(by.id('Passwd')).sendKeys('mean123!');
+            dvr.findElement(by.id('Passwd')).sendKeys(config.seleniumUserPassword);
             console.log('[SELENIUM-TEST][AÇÃO] Clicando no botão [ENTRAR]');
             dvr.findElement(by.id('signIn')).click();
             console.log('[SELENIUM-TEST] Aguardando o carregamento da próxima etapa');

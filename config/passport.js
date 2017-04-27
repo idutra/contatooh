@@ -7,14 +7,15 @@ var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
 var findOrCreate = require('mongoose-findorcreate');
 var mongoose = require('mongoose');
+var config = require('./config')();
 
 module.exports = function () {
 
     var Usuario = mongoose.model('Usuario');
 
     passport.use(new GoogleStrategy({
-            clientID:     '662541689231-8et1lg5mkah6tu32iemvqumli4n30783.apps.googleusercontent.com',
-            clientSecret: '6pYjclWuygjXBoY77GDMvtfa',
+            clientID: config.clientID,
+            clientSecret: config.clientSecret,
             callbackURL: "http://localhost:3000/auth/google/callback",
             passReqToCallback   : true
         },
