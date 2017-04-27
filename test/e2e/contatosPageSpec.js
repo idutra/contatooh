@@ -1,13 +1,17 @@
 /**
  * Created by IGOR on 26/04/2017.
  */
+var ContatosPage = new require('./pages/contatosPage');
+
 describe('Página principal', function () {
+    var pagina = new ContatosPage();
+
     beforeEach(function () {
-        browser.get('http://localhost:3000/#/contatos');
+        pagina.visitar();
     });
     it('Deve estar logado', function () {
         console.log('***********************************************************');
-        element(by.id('usuario-logado')).getText().then(function (texto) {
+        pagina.obtemUsuarioLogado().then(function (texto) {
             console.log('[SELENIUM-TEST] Verificando se o usuário está logado');
             expect(texto.trim().length).toBeGreaterThan(0);
         });
@@ -16,10 +20,10 @@ describe('Página principal', function () {
     it('Deve remover um contato da lista', function () {
         console.log('***********************************************************');
         console.log('[SELENIUM-TEST] Removendo um contato da lista');
-        var totalAntes = element.all(by.repeater('contato in contatos')).count();
+        var totalAntes = pagina.obtemTotalItensLista();
         console.log('[SELENIUM-TEST][AÇÃO] Clicando no botçao [REMOVER]');
-        element(by.repeater('contato in contatos').row(0)).element(by.css('.btn')).click();
-        var totalDepois = element.all(by.repeater('contato in contatos')).count();
+        pagina.removerPrimeiroItemLista();
+        var totalDepois = pagina.obtemTotalItensLista();
         expect(totalDepois).toBeLessThan(totalAntes);
 
     });
