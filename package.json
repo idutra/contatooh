@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server"
+    "start": "node server",
     "test": "karma start --single-run --browsers PhantomJS"
   },
   "author": "",
@@ -21,7 +21,7 @@
     "method-override": "^2.1.3",
     "mongo-sanitize": "^1.0.0",
     "mongodb": "^2.2.25",
-    "mongoose": "^4.9.0",
+    "mongoose": "^4.0.6",
     "mongoose-findorcreate": "^0.1.2",
     "passport": "^0.2.2",
     "passport-github": "^0.1.5",
