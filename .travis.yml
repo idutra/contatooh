@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- 0.10
+- 0.1
 notifications:
   email: false
 services:
@@ -19,6 +19,21 @@ before_install:
 - bower install
 before_script:
 - node test/data.js
-- grunt
+- grunt minifica
 script:
 - karma start config/karma.config.js --single-run --browsers PhantomJS
+deploy:
+  provider: openshift
+  user: igor.p.dutra87@gmail.com
+  password:
+    secure: cebfZ0lz2/4CNjdafqcLTl0UQHI+fSYrKWdjA0GRPjQ3LeTh2+faD1HBeAZHH8nty7TAtC21mBlC87VEENvdCthC/5tq7PuQ5q9OcUfWubgdcDhCZbcpsjFab22G8Rsq8u4IBmnaSvPfp1audIltOWgn2M0kqDUjZEr0hROPsMmv3Lrx/ooMRJwoLAZhi1+qaLdYBKXuVWqxFnVWnZY/sQAGAuSf2Syn+ApPl9cZ7+ygTea/sxHuLytBlllLpyQdygiJGhJ+hb3+kP6CmF88HwVif09zG7eiSYrt/BXbusTy3P0Xa2uAlp8E6p9U9PdAgyoNvvssl/Fhh/cR7HG4aW81VKpByjT8IY3h7T22nPK5Hm1LEVnegTgOoQnN7ojetYBY+3v0MmwK5RWDVSOCk8rA4PYOyCl3efyK09WpdyuLCO2McZkNRXUR3U7rmxYTL4AYNY0OjttwqkoMGYwaz2sYpBd5vRjsE5PxAFue8ueEwEcH8ZHhQlwVQ+4s90khXQzGmxfzF/5SuHvdSXlwcdQTSXkmu7bamYRRNN7zgYfHZ3dxXB4SVhhSMrOn1QvAP4MfhMC6UnJt39aylpIdbpgvuInQAhvyZOKjdUY0eP4xxe4MMf+2jn50tUSSMvJ5DbMuaycmd8KeUMNmHhoqUuZi6eVvvGTJzUAvh6uL/Ys=
+  app: contatooh
+  domain: http://contatooh-idutra.rhcloud.com/
+  on:
+    repo: idutra/contatooh
+before deploy:
+- git config --global user.email 'travis@travis-ci.com'
+- git config --global user.name 'Travis CI'
+- git checkout $TRAVIS_BRANCH
+- git add --all
+- git commit -am "Travis Commit"

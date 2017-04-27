@@ -4,6 +4,7 @@
 module.exports = function (grunt) {
 
     grunt.initConfig({
+
         copy : {
             project : {
                 expand : true,
@@ -18,28 +19,28 @@ module.exports = function (grunt) {
             }
         },
         usemin : {
-            html: 'dist/app/views/**/*.ejs'
+            html: 'app/views/**/*.ejs'//adicionar o dist/ antes do app/ para rodar em desenvolvimento.
         },
         useminPrepare: {
             options: {
-                root: 'dist/public',
-                dest: 'dist/public'
+                root: 'public',//adicionar o dist/ antes do public/ para rodar em desenvolvimento.
+                dest: 'public'//adicionar o dist/ antes do public/ para rodar em desenvolvimento.
             },
-            html: 'dist/app/views/**/*.ejs'
+            html: 'app/views/**/*.ejs'//adicionar o dist/ antes do app/ para rodar em desenvolvimento.
         },
 		ngAnnotate: {
 			scripts: {
 				expand: true,
-				src: ['dist/public/js/**/*.js']
+				src: ['public/js/**/*.js']//adicionar o dist/ antes do public/ para rodar em desenvolvimento.
 			}
 		}
     });
 
-    grunt.registerTask('default',['dist','minifica']);
-    grunt.registerTask('dist',['clean','copy']);
+    //grunt.registerTask('default',['dist','minifica']); //remover o comentario para desenvolvimento
+    //grunt.registerTask('dist',['clean','copy']); //remover o comentario para desenvolvimento
     grunt.registerTask('minifica',['useminPrepare','ngAnnotate','concat','uglify','cssmin','usemin'])
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
+    //grunt.loadNpmTasks('grunt-contrib-copy');//remover o comentario para desenvolvimento
+    //grunt.loadNpmTasks('grunt-contrib-clean');//remover o comentario para desenvolvimento
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
