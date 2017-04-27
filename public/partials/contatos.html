@@ -41,9 +41,7 @@
                 <td>{{contato.email}}</td>
                 <td>{{contato.emergencia.nome}}</td>
                 <td class="text-center">
-                    <button class="btn btn-warning" ng-click="remove(contato)">
-                        Remover
-                    </button>
+                    <meu-botao-aviso acao="remove(contato)" nome="Remover"/>
                 </td>
             </tr>
         </table>
