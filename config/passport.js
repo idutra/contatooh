@@ -10,13 +10,13 @@ var mongoose = require('mongoose');
 var config = require('./config')();
 
 module.exports = function () {
-
+    var googleCallback = 'http://'+config.domain+':'+config.port+'/auth/google/callback';
     var Usuario = mongoose.model('Usuario');
 
     passport.use(new GoogleStrategy({
             clientID: config.clientID,
             clientSecret: config.clientSecret,
-            callbackURL: "http://localhost:3000/auth/google/callback",
+            callbackURL: googleCallback,
             passReqToCallback   : true
         },
         function(request, accessToken, refreshToken, profile, done) {
