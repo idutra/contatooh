@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- 0.1
+- 0.10
 notifications:
   email: false
 services:
@@ -20,8 +20,16 @@ before_install:
 before_script:
 - node test/data.js
 - grunt minifica
+- node server &
+- sleep 10
 script:
 - karma start config/karma.config.js --single-run --browsers PhantomJS
+before_deploy:
+- git config --global user.email 'travis@travis-ci.com'
+- git config --global user.name 'Travis CI'
+- git checkout $TRAVIS_BRANCH
+- git add --all
+- git commit -am "Travis commit"
 deploy:
   provider: openshift
   user: igor.p.dutra87@gmail.com
@@ -31,9 +39,3 @@ deploy:
   domain: http://contatooh-idutra.rhcloud.com/
   on:
     repo: idutra/contatooh
-before deploy:
-- git config --global user.email 'travis@travis-ci.com'
-- git config --global user.name 'Travis CI'
-- git checkout $TRAVIS_BRANCH
-- git add --all
-- git commit -am "Travis Commit"
